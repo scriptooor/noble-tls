@@ -449,6 +449,7 @@ class Session:
         del response_string
         del response_bytes
         del response_cookie_jar
+        
         # Assign the history to the final response
         current_response.history = history
         return current_response
