@@ -5,6 +5,7 @@ from json import dumps, loads
 import urllib.parse
 import base64
 import ctypes
+import gc
 
 from .c.cffi import request, free_memory
 from .cookies import cookiejar_from_dict, merge_cookies, extract_cookies_to_jar
@@ -444,6 +445,10 @@ class Session:
             else:
                 break
 
+        del response_object
+        del response_string
+        del response_bytes
+        del response_cookie_jar
         # Assign the history to the final response
         current_response.history = history
         return current_response
