@@ -432,28 +432,21 @@ class Session:
                 response_headers=response_object["headers"]
             )
             # build response class
-            current_response = build_response(response_object, response_cookie_jar)
+            # current_response = build_response(response_object, response_cookie_jar)
             # check for redirect
-            if allow_redirects:
-                if 'Location' in (headers := current_response.headers) and current_response.status_code in (
-                    300, 301, 302, 303, 307, 308
-                ):
-                    history.append(current_response)
-                    url = headers['Location']
-                else:
-                    break
-            else:
-                break
-
-        del response_object
-        del response_string
-        del response_bytes
-        del response_cookie_jar
-
-        gc.collect()
-        # Assign the history to the final response
-        current_response.history = history
-        return current_response
+        #     if allow_redirects:
+        #         if 'Location' in (headers := current_response.headers) and current_response.status_code in (
+        #             300, 301, 302, 303, 307, 308
+        #         ):
+        #             history.append(current_response)
+        #             url = headers['Location']
+        #         else:
+        #             break
+        #     else:
+        #         break
+        # # Assign the history to the final response
+        # current_response.history = history
+        # return None
 
     async def get(
             self,
