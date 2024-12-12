@@ -432,7 +432,8 @@ class Session:
                 response_headers=response_object["headers"]
             )
             # build response class
-            # current_response = build_response(response_object, response_cookie_jar)
+            current_response = build_response(response_object, response_cookie_jar)
+            return None
             # check for redirect
         #     if allow_redirects:
         #         if 'Location' in (headers := current_response.headers) and current_response.status_code in (
