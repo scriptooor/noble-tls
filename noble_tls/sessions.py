@@ -413,7 +413,11 @@ class Session:
             # convert response string to json
             response_object = loads(response_string)
             # free the memory
-            await loop.run_in_executor(None, free_memory, response_object['id'].encode('utf-8'))
+            print("Freeing memory")
+            try:
+                await loop.run_in_executor(None, free_memory, response_object['id'].encode('utf-8'))
+            except Exception as err:
+                print(f"Error freeing memory: {err}")
 
             # --- Response -------------------------------------------------------------------------------------------------
             # Error handling
